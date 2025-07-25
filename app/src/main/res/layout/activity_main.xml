@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/black">
+    
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title"
+        android:textColor="@color/white"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="16dp"
+    />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_input_output"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/cl_number_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".32"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_celcius"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginVertical="1dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/custom_bg_color"
+            android:clickable="false"
+            android:text="@string/celcius"
+            android:textSize="24sp"
+            app:layout_constraintHeight_percent=".32"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_input"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="1dp"
+            android:background="@drawable/custom_bg_color"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/btn_celcius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_celcius"
+            app:layout_constraintTop_toTopOf="@+id/btn_celcius">
+
+            <TextView
+                android:id="@+id/tv_input"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:gravity="center|end"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="0" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_fahrenheit"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginVertical="1dp"
+            android:layout_marginEnd="1dp"
+            android:background="@drawable/custom_bg_color"
+            android:clickable="false"
+            android:text="@string/fahrenheit"
+            app:layout_constraintHeight_percent=".32"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_celcius" />
+
+        <LinearLayout
+            android:id="@+id/ll_output"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="1dp"
+            android:background="@drawable/custom_bg_color"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/btn_fahrenheit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_fahrenheit"
+            app:layout_constraintTop_toTopOf="@+id/btn_fahrenheit">
+
+            <TextView
+                android:id="@+id/tv_output"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:gravity="center|end"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                tools:text="0" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_swap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/swap"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ll_output" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_number_group"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="64dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_input_output"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:id="@+id/ll_number_first_row"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="100"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ll_number_second_row"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:text="1"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_2"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="match_parent"
+                android:text="2"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_3"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="match_parent"
+                android:text="3"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_c"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="match_parent"
+                android:text="c"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+
+            
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_number_second_row"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="100"
+            app:layout_constraintTop_toBottomOf="@+id/ll_number_first_row"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ll_number_third_row"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:text="4"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_5"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="match_parent"
+                android:text="5"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_6"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="match_parent"
+                android:text="6"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_add"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="match_parent"
+                android:text="+"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_number_third_row"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="100"
+            app:layout_constraintTop_toBottomOf="@+id/ll_number_second_row"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/ll_number_forth_row"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:text="7"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_8"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="match_parent"
+                android:text="8"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_9"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="match_parent"
+                android:text="9"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_sub"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="match_parent"
+                android:text="-"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_number_forth_row"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:weightSum="100"
+            app:layout_constraintTop_toBottomOf="@+id/ll_number_third_row"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:text="0"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_dot"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="match_parent"
+                android:text="."
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_convert"
+                android:layout_width="0dp"
+                android:layout_weight="25"
+                android:layout_height="match_parent"
+                android:text="OK"
+                android:layout_margin="1dp"
+                android:background="@drawable/custom_bg_color"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+
+
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--
+wrap_content itu sizenya sesuai sesuai ukuran text/ukuran yang dibuat
+-->

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Unit Converter App</string>
+    <string name="title">Temperature\nConverter</string>
+    <string name="fahrenheit">F</string>
+    <string name="celcius">C</string>
+    <string name="swap">Swap</string>
+</resources>
