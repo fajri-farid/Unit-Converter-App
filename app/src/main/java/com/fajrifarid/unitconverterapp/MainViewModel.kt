@@ -18,13 +18,34 @@ class MainViewModel: ViewModel() {
     private val _activeInputUnit = MutableLiveData(celcius)
     val activeInputUnit: LiveData<String> = _activeInputUnit
 
-    fun setInput(value: String){
-        if(_input.value == "0"){
-            _input.value = value
-        }else{
-            _input.value += value
+    fun setInput(value: String) {
+        val current = _input.value ?: "0"
+
+        when (value) {
+            "-" -> {
+                if (!current.startsWith("-")) {
+                    _input.value = "-$current"
+                }
+            }
+
+            "." -> {
+                if (!current.contains(".")) {
+                    _input.value += "."
+                }
+            }
+
+            in "0".."9" -> {
+                if (current == "0") {
+                    _input.value = value
+                } else if (current == "-0") {
+                    _input.value = "-$value"
+                } else {
+                    _input.value += value
+                }
+            }
         }
     }
+
 
     fun clearInput(){
         _input.value = if (_input.value?.length == 1){
